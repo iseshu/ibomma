@@ -1,4 +1,5 @@
 httpx
+cloudscraper
 flask
 flask-cors
 bs4
