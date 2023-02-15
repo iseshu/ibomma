@@ -1,5 +1,6 @@
 import httpx
 import json
+import cloudscraper
 from bs4 import BeautifulSoup
 def get_mainpage():
   url = "https://ww5.ibomma.cx/telugu-movies/"
@@ -92,6 +93,7 @@ def get_page(url):
   return {"status":True,"data":data}
   
 def get_dwnlink(link):
-	req = httpx.get(link,headers = {"Referer" : "https://seucre-otp-ymflg-h002giy-ig-india.ibc.wf/"}).text
+	scraper = cloudscraper.create_scraper()
+	req = scraper.get(link).content
 	soup1 = BeautifulSoup(req,'html.parser')
 	return soup1.prettify()
