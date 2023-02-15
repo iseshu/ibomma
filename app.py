@@ -33,11 +33,8 @@ def get_url():
 @app.route('/dwnlink',methods=['GET'])
 def dwnurl():
 	link = request.args.get('url')
-	try:
-		url = get_dwnlink(link)
-		data = {"status":True,"source_link":link,"dwn_link":url}
-	except:
-		data = {"status":False}
+	url = get_dwnlink(link)
+	data = {"status":True,"source_link":link,"dwn_link":url}
 	return jsonify(data)
 
 if __name__ == '__main__':
