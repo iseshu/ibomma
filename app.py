@@ -34,8 +34,8 @@ def get_url():
 def dwnurl():
 	link = request.args.get('url')
 	url = get_dwnlink(link)
-	data = {"status":True,"source_link":link,"dwn_link":url}
-	return jsonify(data)
+	#data = {"status":True,"source_link":link,"dwn_link":url}
+	return url
 
 if __name__ == '__main__':
 	app.run()
