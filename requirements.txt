@@ -1,0 +1,5 @@
+httpx
+flask
+flask-cors
+bs4
+gunicorn
