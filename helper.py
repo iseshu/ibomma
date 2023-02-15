@@ -94,6 +94,4 @@ def get_page(url):
 def get_dwnlink(link):
 	req = httpx.get(link,headers = {"Referer" : "https://seucre-otp-ymflg-h002giy-ig-india.ibc.wf/"}).text
 	soup1 = BeautifulSoup(req,'html.parser')
-	lin1 = soup1.find('a',class_="button-download-css")['onclick'].replace('location.href=','').replace('`','')
-	dwn_link = httpx.head(lin1,headers = {"Referer" : "https://seucre-otp-ymflg-h002giy-ig-india.ibc.wf/"},verify=False).headers['location']
-	return dwn_link
+	return soup1
