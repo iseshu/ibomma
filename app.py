@@ -24,10 +24,7 @@ def search():
 @app.route('/get',methods=['GET'])
 def get_url():
 	url = request.args.get('url')
-	try:
-		data = get_page(url)
-	except:
-		data = {"status":False}
+	data = get_page(url)
 	return jsonify(data)
 
 @app.route('/dwnlink',methods=['GET'])
