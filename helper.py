@@ -1,4 +1,5 @@
 import httpx
+import requests
 import json
 from bs4 import BeautifulSoup
 def get_mainpage():
@@ -93,7 +94,7 @@ def get_page(url):
 def get_dwnlink(link):
 	proxies = {"https": "https://174.70.1.210:8080",
 		  "http": "http://174.70.1.210:8080"}
-	req = httpx.get(link,headers = {"Referer" : "https://seucre-otp-ymflg-h002giy-ig-india.ibc.wf/"},proxies=proxies).text
+	req = requests.get(link,headers = {"Referer" : "https://seucre-otp-ymflg-h002giy-ig-india.ibc.wf/"},proxies=proxies,verify=False).text
 	soup1 = BeautifulSoup(req,'html.parser')
 	lin1 = soup1.find('a',class_="button-download-css")['onclick'].replace('location.href=','').replace('`','')
 	dwn_link = httpx.head(lin1,headers = {"Referer" : "https://seucre-otp-ymflg-h002giy-ig-india.ibc.wf/"},verify=False).headers['location']
