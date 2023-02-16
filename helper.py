@@ -2,7 +2,7 @@ import httpx
 import json
 from bs4 import BeautifulSoup
 def get_mainpage():
-  url = "https://ww5.ibomma.cx/telugu-movies/"
+  url = "https://ww5.ibomma.one/telugu-movies/"
   req = httpx.get(url).text
   soup = BeautifulSoup(req,'html.parser')
   articles = soup.find_all('article',class_='post hentry')
@@ -91,7 +91,8 @@ def get_page(url):
   return {"status":True,"data":data}
   
 def get_dwnlink(link):
-	req = httpx.get(link,headers = {"Referer" : "https://seucre-otp-ymflg-h002giy-ig-india.ibc.wf/"}).text
+	proxies = {"http://": "http://139.59.1.14:3128"}
+	req = httpx.get(link,headers = {"Referer" : "https://seucre-otp-ymflg-h002giy-ig-india.ibc.wf/"},proxies=proxies).text
 	soup1 = BeautifulSoup(req,'html.parser')
 	lin1 = soup1.find('a',class_="button-download-css")['onclick'].replace('location.href=','').replace('`','')
 	dwn_link = httpx.head(lin1,headers = {"Referer" : "https://seucre-otp-ymflg-h002giy-ig-india.ibc.wf/"},verify=False).headers['location']
